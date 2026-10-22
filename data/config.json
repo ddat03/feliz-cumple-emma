@@ -1,0 +1,37 @@
+{
+  "nombre": "Emma Amelie",
+  "tituloSitio": "¡Feliz cumpleaños, Emma!",
+  "subtituloPortada": "Hoy cumples 11 años, mi campeona",
+  "botonPortada": "Abrir mi regalo",
+  "fechaNacimiento": null,
+  "etiquetaContador": "de pura alegría, goles y canciones",
+  "boveda": {
+    "codigo": "0000",
+    "titulo": "CONTRASEÑA",
+    "instruccion": "Ingresa los 4 dígitos para jugar",
+    "pista": "",
+    "intentosParaPista": 3
+  },
+  "musica": {
+    "archivo": "musica/cancion.mp3",
+    "titulo": "Happy Birthday to You",
+    "credito": "Música: “Happy Birthday to You” — versión instrumental de dominio público (Wikimedia Commons)"
+  },
+  "fondo": {
+    "imagen": "",
+    "opacidad": 0.5
+  },
+  "cierre": {
+    "titulo": "¡Feliz cumpleaños, mi campeona!",
+    "mensaje": "Gracias por iluminar mi vida y por enseñarme a ser mejor cada día. Que este nuevo año esté lleno de goles, canciones, risas y sueños cumplidos. Te quiero hoy y siempre, mi campeona. — Papá"
+  },
+  "firmaAutor": "Creado por Diego Aleman",
+  "arbol": {
+    "mensaje": "Y sigues creciendo, cada día más fuerte y más brillante."
+  },
+  "juego": {
+    "titulo": "FELIZ CUMPLEAÑOS, EMMA",
+    "avisoSalir": "¡No puedes salir! Hoy es tu cumpleaños 🎂",
+    "sinVidas": "¡Vidas extra! Inténtalo otra vez"
+  }
+}
