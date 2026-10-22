@@ -24,10 +24,35 @@
     return ruta.split('.').reduce(function (o, k) { return o == null ? o : o[k]; }, obj);
   }
 
+  // Las fotos de más arriba cargan mientras se desplaza y empujan el destino hacia
+  // abajo; por eso, al detenerse, se corrige hasta quedar justo en la sección.
+  var seguimientoScroll = null;
   function scrollA(sel) {
     var destino = $(sel);
     if (!destino) return;
     destino.scrollIntoView({ behavior: PREFIERE_MENOS_MOVIMIENTO ? 'auto' : 'smooth', block: 'start' });
+    clearInterval(seguimientoScroll);
+    var inicio = Date.now(), ultimaY = -1, quieto = 0;
+    function soltar() {
+      clearInterval(seguimientoScroll);
+      window.removeEventListener('wheel', soltar);
+      window.removeEventListener('touchstart', soltar);
+    }
+    window.addEventListener('wheel', soltar, { passive: true });
+    window.addEventListener('touchstart', soltar, { passive: true });
+    seguimientoScroll = setInterval(function () {
+      var top = destino.getBoundingClientRect().top;
+      quieto = (window.scrollY === ultimaY) ? quieto + 1 : 0;
+      ultimaY = window.scrollY;
+      if (quieto >= 2 && Math.abs(top) > 4) {
+        var raiz = document.documentElement, previo = raiz.style.scrollBehavior;
+        raiz.style.scrollBehavior = 'auto';
+        window.scrollTo(0, window.scrollY + top);
+        raiz.style.scrollBehavior = previo;
+        quieto = 0;
+      }
+      if (Date.now() - inicio > 5000 || (quieto >= 3 && Math.abs(top) <= 4)) soltar();
+    }, 150);
   }
 
   /* ---------- observer de aparición al hacer scroll ---------- */
